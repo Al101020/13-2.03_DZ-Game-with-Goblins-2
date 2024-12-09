@@ -1,11 +1,11 @@
 import "./pole.css";
 
 function createPole() {
-  let divPole = document.createElement("div");
+  let divPoleGame = document.createElement("div");
 
-  divPole.classList = "pole-game";
+  divPoleGame.classList = "pole-game";
 
-  document.querySelector("body").append(divPole);
+  document.querySelector("body").append(divPoleGame);
 
   for (let i = 0; i < 16; i++) {
     let divPole = document.createElement("div");
