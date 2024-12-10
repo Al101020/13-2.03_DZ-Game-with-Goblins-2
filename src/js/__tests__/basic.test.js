@@ -1,6 +1,6 @@
-import sum from "../../components/basic";
+import sum from '../../components/basic';
 
-test("should sum", () => {
+test('should sum', () => {
   const result = sum([1, 2, 3]);
 
   expect(result).toBe(6);
