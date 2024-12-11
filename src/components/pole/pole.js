@@ -1,4 +1,6 @@
+// import '../../css/pole.css';
 import './pole.css';
+// console.log('qqq');
 
 function createPole() {
   const divPoleGame = document.createElement('div');

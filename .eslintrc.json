@@ -6,9 +6,6 @@
      "jest": true
   },
   "rules": {
-    "no-inner-declarations": "off",
-    "no-loop-func": "off",
-    "no-plusplus": "off",
     "no-restricted-syntax": [
       "error",
       "LabeledStatement",
