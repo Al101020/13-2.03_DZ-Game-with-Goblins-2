@@ -1,8 +1,7 @@
 // import '../../css/pole.css';
-import './pole.css';
-// console.log('qqq');
+// import './pole.css';
 
-function createPole() {
+export function createPole() {
   const divPoleGame = document.createElement('div');
 
   divPoleGame.classList = 'pole-game';
@@ -17,11 +16,8 @@ function createPole() {
   }
 }
 
-createPole(); // создаём игровое поле
-
-const arr = document.querySelectorAll('.pole');
-
-function intervalGoblin() {
+export function intervalGoblin() {
+  const arr = document.querySelectorAll('.pole');
   for (let i = 0; i < arr.length; i += 1) {
     arr[i].classList = 'pole';
   }
@@ -29,5 +25,3 @@ function intervalGoblin() {
   const random = Math.floor(Math.random() * (15 - 0 + 1)) + 0;
   arr[random].classList = 'pole goblinPole';
 }
-
-setInterval(intervalGoblin, 1000); // интервал появления гоблина
