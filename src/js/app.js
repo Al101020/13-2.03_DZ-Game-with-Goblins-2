@@ -1,10 +1,9 @@
 import '../components/pole/pole.css';
 import '../components/title/title.css';
 
-import { createPole } from '../components/pole/pole';
-import { intervalGoblin } from '../components/pole/pole';
-import { createH1 } from '../components/title/title';
-import { createDiv } from '../components/title/title';
+import { createPole, intervalGoblin } from '../components/pole/pole';
+
+import { createH1, createDiv } from '../components/title/title';
 
 createPole(); // создаём игровое поле
 setInterval(intervalGoblin, 1000); // появления гоблина
