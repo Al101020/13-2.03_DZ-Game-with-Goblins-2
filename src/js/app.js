@@ -1,8 +1,6 @@
 import '../components/pole/pole.css';
 import '../components/title/title.css';
-
 import { createPole, intervalGoblin } from '../components/pole/pole';
-
 import { createH1, createDiv } from '../components/title/title';
 
 createPole(); // создаём игровое поле
@@ -17,16 +15,20 @@ let seconds = 0;
 
 function secondsLimit() {
   seconds++;
-  if (seconds === 5) {
+  const dead = Number(document.querySelector('.dead').textContent);
+  let lost = Number(document.querySelector('.lost').textContent);
+
+  if (seconds >= 5) {
     seconds = 0;
-    document.querySelector('.lost').textContent++;
+    lost++;
+    document.querySelector('.lost').innerHTML = lost;
   }
-  if (document.querySelector('.lost').textContent >= 5) {
+  if (lost >= 5) {
     alert('Ты проиграл!');
     document.querySelector('.dead').textContent = 0;
     document.querySelector('.lost').textContent = 0;
   }
-  if (document.querySelector('.dead').textContent >= 5) {
+  if (dead >= 5) {
     alert('Ты выиграл!');
     document.querySelector('.dead').textContent = 0;
     document.querySelector('.lost').textContent = 0;
@@ -35,22 +37,25 @@ function secondsLimit() {
 
 setInterval(secondsLimit, 1000);
 
-for (let i = 0; i < arrayPole.length; i++) {
-  function poleClick() {
-    if (
-      document.getElementById(`pole${[i + 1]}`).className === 'pole goblinPole'
-    ) {
-      document.querySelector('.dead').textContent++;
-      secondsLimit();
-    } else if (document.getElementById(`pole${[i + 1]}`).className === 'pole') {
-      document.querySelector('.lost').textContent++;
-      secondsLimit();
-    }
-    seconds = 0;
+function poleClick(i) {
+  const poleTarget = i.target;
+  if (poleTarget.className === 'pole goblinPole') {
+    let dead = Number(document.querySelector('.dead').textContent);
+    dead++;
+    document.querySelector('.dead').innerHTML = dead;
+    secondsLimit();
+  } else if (poleTarget.className === 'pole') {
+    let lost = Number(document.querySelector('.lost').textContent);
+    lost++;
+    document.querySelector('.lost').innerHTML = lost;
+    secondsLimit();
   }
-  document.getElementById(`pole${[i + 1]}`).onclick = poleClick;
+  seconds = 0;
 }
 
+for (let i = 0; i < arrayPole.length; i++) {
+  document.getElementById(`pole${[i + 1]}`).onclick = (j) => poleClick(j);
+}
 // --------- попал / промахнулся
 document.querySelectorAll('span')[0].classList = 'dead';
 document.querySelectorAll('span')[1].classList = 'lost';
